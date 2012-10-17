@@ -1,6 +1,15 @@
 <ul class="nav nav-list">
   <li class="nav-header">Component Types</li>
-  <% @component_types.each do |ct| %>
-    <li><%= link_to ct.name, ct %></li>
+
+  <% ComponentType.roots.each do |root| %>
+    <% root.post_order do |ct, level| %>
+      <li>
+        <%= link_to ct do %>
+          <% (level-1).times do %>--<% end %>
+          <%= ct.name %>
+          <span class="badge badge-warning pull-right"><%= ct.components.count %></span>
+        <% end %>
+      </li>
+    <% end %>
   <% end %>
 </ul>

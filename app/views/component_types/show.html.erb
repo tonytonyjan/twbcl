@@ -1,10 +1,10 @@
 <%= page_header @component_type.name %>
 <div class="row">
-  <div class="span2 well">
+  <div class="span3 well">
     <%= render "share/navside" %>
   </div>
 
-  <div class="span9">
+  <div class="span8">
     <ul>
       <% @components.each do |c| %>
         <li><%= c.name %> <%= link_to "Show", c %> <%= link_to "Edit", edit_component_path(c) %> <%= link_to "Delete", component_path(c), :method => :delete %></li>

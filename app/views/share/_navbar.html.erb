@@ -13,12 +13,11 @@
           <%= nav_li "About", home_about_path %>
           <%= nav_li "Contact", home_contact_path %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Management <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <%= nav_li "New Component", new_component_path %>
               <%= nav_li "New Component Type", new_component_type_path %>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
+              <%= nav_li "Manage Component Type", component_types_path %>
               <li class="divider"></li>
               <li class="nav-header">Nav header</li>
               <li><a href="#">Separated link</a></li>

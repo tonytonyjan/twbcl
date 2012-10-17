@@ -4,7 +4,7 @@
 <p>
   <% ComponentType.roots.each do |root| %>
     <% root.post_order do |c, level| %>
-      <% (level-1).times do %>----<% end %>
+      <% (level-1).times do %>--<% end %>
       <%= c.name %> <%= link_to "Show", c %> <%= link_to "Edit", edit_component_type_path(c) %> <%= link_to "Delete", component_type_path(c), :method => :delete %><br>
     <% end %>
   <% end %>
