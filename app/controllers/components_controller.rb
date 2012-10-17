@@ -16,8 +16,7 @@ class ComponentsController < ApplicationController
 
   def new
     @component = Component.new
-    @component.attrs.build
-    @component.component_files.build
+    @component.os_objects.build.attrs.build
   end
 
   def create
@@ -31,8 +30,7 @@ class ComponentsController < ApplicationController
   end
 
   def edit
-    @component.attrs.build
-    @component.component_files.build
+    @component.os_objects.build.attrs.build
   end
 
   def update

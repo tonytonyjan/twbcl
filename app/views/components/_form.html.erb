@@ -9,49 +9,20 @@
     </div>
 
     <div class="span3">
-      <p>Attributes</p>
-      <%= f.simple_fields_for :attrs do |ff| %>
-        <div class="attr-fields">
-          <%= ff.input :name, :label => false, :collection => Component::ATTRIBUTES
-          %>
-          <%= ff.input :value, :label => false, :placeholder => "Value" %>
-          <%= ff.input :_destroy, :as => :boolean, :label => false, :input_html => {:title => "Delete?"} if ff.object.persisted? %>
-          <hr>
-        </div>
-      <% end %>
-      <%= button_tag "New Attribute", :id => "new-attr-btn", :type => "button", :class => "btn" %>
-    </div>
-
-    <div class="span3">
-      <p>Files</p>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>File Name</th>
-            <th>Delete?</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= f.simple_fields_for :component_files do |ff| %>
-              <% if ff.object.persisted? %>
-                <tr>
-                  <td><%= link_to ff.object.file_filename, ff.object.file_url %></td>
-                  <td><%= ff.input :_destroy, :as => :boolean, :label => false %></td>
-                </tr>
-              <% end %>
+      <p>Open Studio Objects</p>
+      <%= f.simple_fields_for :os_objects do |ff| %>
+        <div class="os-obj-fields">
+          <%= ff.input :name %>
+          <p>Attributes</p>
+          <%= ff.simple_fields_for :attrs do |fff| %>
+            <div class="attr-fields">
+              <%= fff.input :name, :label => false, :placeholder => "Name" %>
+              <%= fff.input :value, :label => false, :placeholder => "Value" %>
             </div>
           <% end %>
-        </tbody>
-      </table>
-      <%= f.simple_fields_for :component_files do |ff| %>
-        <% if ff.object.new_record? %>
-          <div class="file-fields">
-            <%= ff.input :file, :label => false %>
-          </div>
-        <% end %>
-      <% end  %>
-      <%= button_tag "New File", :id => "new-file-btn", :type => "button", :class => "btn" %>
+          <%= button_tag "New Attribute", :type => "button", :class => "btn new-attr-btn" %>
+        </div>
+      <% end %>
     </div>
-    
   <% end %>
 </div>
