@@ -15,3 +15,10 @@
     <li><%= ct.name %></li>
   <% end %>
 </ul>
+
+<h3>Files</h3>
+<ul>
+  <% @component.component_files.each do |cf| %>
+    <li><%= link_to cf.file_filename, cf.file_url %></li>
+  <% end %>
+</ul>

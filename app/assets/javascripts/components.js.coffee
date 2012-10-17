@@ -14,4 +14,13 @@ $(document).ready ->
       element.name = element.name.replace(/\d+/, now)
       console.info element
     last_fields.after new_fields
-
+  $('#new-file-btn').click (event) ->
+    last_fields = $('.file-fields:last-of-type')
+    new_fields = last_fields.clone()
+    now = Date.now()
+    new_fields.find('input').each (index, element) ->
+      element.value = ""
+      element.id = element.id.replace(/\d+/, now)
+      element.name = element.name.replace(/\d+/, now)
+      console.info element
+    last_fields.after new_fields

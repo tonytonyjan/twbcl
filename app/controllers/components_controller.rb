@@ -12,6 +12,7 @@ class ComponentsController < ApplicationController
   def new
     @component = Component.new
     @component.attrs.build
+    @component.component_files.build
   end
 
   def create
@@ -26,6 +27,7 @@ class ComponentsController < ApplicationController
 
   def edit
     @component.attrs.build
+    @component.component_files.build
   end
 
   def update

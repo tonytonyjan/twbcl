@@ -4,6 +4,8 @@ gem 'rails', '3.2.8'
 gem 'mongoid'
 gem 'simple_form'
 gem 'dynamic_form'
+gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
 group :development do
   gem 'faker'

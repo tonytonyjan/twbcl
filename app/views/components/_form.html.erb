@@ -1,5 +1,5 @@
 <div class="row">
-  <%= simple_form_for @component do |f| %>
+  <%= simple_form_for @component, :multipart => true do |f| %>
     <%= record_message @component %>
 
     <div class="span3">
@@ -18,6 +18,37 @@
         </div>
       <% end %>
       <%= button_tag "New Attribute", :id => "new-attr-btn", :type => "button", :class => "btn" %>
+    </div>
+
+    <div class="span3">
+      <p>Files</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>File Name</th>
+            <th>Delete?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= f.simple_fields_for :component_files do |ff| %>
+              <% if ff.object.persisted? %>
+                <tr>
+                  <td><%= link_to ff.object.file_filename, ff.object.file_url %></td>
+                  <td><%= ff.input :_destroy, :as => :boolean, :label => false %></td>
+                </tr>
+              <% end %>
+            </div>
+          <% end %>
+        </tbody>
+      </table>
+      <%= f.simple_fields_for :component_files do |ff| %>
+        <% if ff.object.new_record? %>
+          <div class="file-fields">
+            <%= ff.input :file, :label => false %>
+          </div>
+        <% end %>
+      <% end  %>
+      <%= button_tag "New File", :id => "new-file-btn", :type => "button", :class => "btn" %>
     </div>
     
   <% end %>
