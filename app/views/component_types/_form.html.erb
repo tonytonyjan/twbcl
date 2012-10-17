@@ -1,5 +1,6 @@
 <%= simple_form_for @component_type do |f| %>
   <%= record_message @component_type %>
   <%= f.input :name %>
+  <%= f.association :parent, :collection => ComponentType.all %>
   <%= f.button :submit, :class => "btn-primary" %>
 <% end %>

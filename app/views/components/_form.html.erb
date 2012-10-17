@@ -8,13 +8,15 @@
       <%= f.button :submit, :class => "btn-primary" %>
     </div>
 
-    <div class="span4">
+    <div class="span3">
       <p>Attributes</p>
       <%= f.simple_fields_for :attrs do |ff| %>
         <div class="attr-fields">
           <%= ff.input :name, :label => false, :collection => Component::ATTRIBUTES
           %>
           <%= ff.input :value, :label => false, :placeholder => "Value" %>
+          <%= ff.input :_destroy, :as => :boolean, :label => false, :input_html => {:title => "Delete?"} if ff.object.persisted? %>
+          <hr>
         </div>
       <% end %>
       <%= button_tag "New Attribute", :id => "new-attr-btn", :type => "button", :class => "btn" %>
