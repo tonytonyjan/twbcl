@@ -1,0 +1,15 @@
+<%= page_header "Api Document" %>
+<h3>Single Component</h3>
+<p>The API also allows users to access individual components by ID (nid). The URL for accessing an individual component is: http://bcl.nrel.gov/api/component with the ID of the content added to the path. The user may choose to retrieve the data as xml, json by appending the appropriate type with a dot (".").</p>
+
+<p>For example:</p>
+
+<pre>
+<%= component_url(Component.first) %>
+<%= component_url(Component.first) + ".json" %>
+<%= component_url(Component.first) + ".xml" %>
+</pre>
+
+<h3>API Access</h3>
+
+<p>It's now public :)</p>

@@ -7,6 +7,10 @@ class ComponentsController < ApplicationController
   end
 
   def show
+    case request.format
+    when "json" then render :json => @component
+    when "xml" then render :xml => @component
+    end
   end
 
   def new

@@ -9,9 +9,13 @@
 <!-- Example row of columns -->
 <div class="row">
   <div class="span4">
-    <h2>Components <small>Total Components</small> </h2>
+    <h2>Components <small><%= Component.count %> Components</small> </h2>
     <p>The components are designed to provide data to the energy modeler and simplify the process of gathering inputs. The range of components goes from whole buildings to detailed files, like duct sealing components.</p>
-    <p><%= link_to "Browse Components", components_path, :class => "btn btn-info btn-large" %></p>
+    <form class="form-search">
+      <input type="text" name="q" class="search-query" placeholder="ex. Skylight">
+      <button type="submit" class="btn">Search</button>
+    </form>
+    <p><%= link_to "Browse Components", components_path, :class => "btn btn-warning btn-large" %></p>
   </div>
   <div class="span4">
     <h2>Heading</h2>
@@ -19,8 +23,6 @@
     <p><a class="btn" href="#">View details &raquo;</a></p>
   </div>
   <div class="span4">
-    <h2>Heading</h2>
-    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-    <p><a class="btn" href="#">View details &raquo;</a></p>
+    <%= link_to "Developer Access", home_api_path, :class => "btn btn-success btn-large" %>
   </div>
 </div>

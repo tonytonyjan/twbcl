@@ -5,6 +5,7 @@ Twbcl::Application.routes.draw do
 
   get "home/about"
   get "home/contact"
+  get "home/api"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
