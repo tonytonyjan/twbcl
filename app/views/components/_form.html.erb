@@ -1,0 +1,24 @@
+<div class="row">
+  <%= simple_form_for @component do |f| %>
+    <%= record_message @component %>
+
+    <div class="span3">
+      <%= f.input :name %>
+      <%= f.association :component_types, :collection => ComponentType.all, :as => :check_boxes %>
+      <%= f.button :submit, :class => "btn-primary" %>
+    </div>
+
+    <div class="span4">
+      <p>Attributes</p>
+      <%= f.simple_fields_for :attrs do |ff| %>
+        <div class="attr-fields">
+          <%= ff.input :name, :label => false, :collection => Component::ATTRIBUTES
+          %>
+          <%= ff.input :value, :label => false, :placeholder => "Value" %>
+        </div>
+      <% end %>
+      <%= button_tag "New Attribute", :id => "new-attr-btn", :type => "button", :class => "btn" %>
+    </div>
+    
+  <% end %>
+</div>

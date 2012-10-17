@@ -1,0 +1,17 @@
+<%= page_header @component.name %>
+<%= link_to "Edit", edit_component_path(@component) %>
+<%= link_to "Delete", component_path(@component), :method => :delete %>
+<h3>Attributes</h3>
+<dl>
+  <% @component.attrs.each do |attr|%>
+    <dt><%= attr.name %></dt>
+    <dd><%= attr.value %></dd>
+  <% end %>
+</dl>
+
+<h3>Component Types</h3>
+<ul>
+  <% @component.component_types.each do |ct| %>
+    <li><%= ct.name %></li>
+  <% end %>
+</ul>

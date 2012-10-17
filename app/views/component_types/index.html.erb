@@ -1,0 +1,7 @@
+<%= page_header "Component Types" %>
+<%= link_to "New component type", new_component_type_path %>
+<ul>
+  <% @component_types.each do |ct| %>
+    <li><%= ct.name %> <%= link_to "Show", ct %> <%= link_to "Edit", edit_component_type_path(ct) %> <%= link_to "Delete", component_type_path(ct), :method => :delete %></li>
+  <% end %>
+</ul>
