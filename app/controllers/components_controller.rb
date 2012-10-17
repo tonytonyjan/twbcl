@@ -10,6 +10,7 @@ class ComponentsController < ApplicationController
     case request.format
     when "json" then render :json => @component
     when "xml" then render :xml => @component
+    when "yaml" then render :text => @component.to_yaml, :content_type => 'text/yaml'
     end
   end
 
