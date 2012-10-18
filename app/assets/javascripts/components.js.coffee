@@ -12,5 +12,15 @@ $(document).ready ->
       element.value = ""
       element.id = element.id.replace(/attrs_attributes_\d+/, "attrs_attributes_" + now)
       element.name = element.name.replace(/attrs_attributes\]\[\d+/, "attrs_attributes][" + now)
-      console.info element
+      # console.info element
+    last_fields.after new_fields
+  $('.new-obj-btn').click (event) ->
+    last_fields = $('.os-obj-fields:last-of-type')
+    new_fields = last_fields.clone()
+    now = Date.now()
+    new_fields.find('input').each (index, element) ->
+      element.value = ""
+      element.id = element.id.replace(/os_objects_attributes_\d+/, "os_objects_attributes_" + now)
+      element.name = element.name.replace(/os_objects_attributes\]\[\d+/, "os_objects_attributes][" + now)
+      # console.info element
     last_fields.after new_fields

@@ -4,7 +4,7 @@ class Component
   field :name, :type => String
   embeds_many :os_objects
   has_and_belongs_to_many :component_types
-  accepts_nested_attributes_for :os_objects, :allow_destroy => true
+  accepts_nested_attributes_for :os_objects, :allow_destroy => true, :reject_if => proc{|attributes| attributes['name'].blank?}
   validates :name, :presence => true
 end
 
@@ -14,7 +14,7 @@ class OsObject
   embeds_many :attrs
   accepts_nested_attributes_for :attrs,
     :allow_destroy => true,
-    :reject_if => proc { |attributes| attributes['name'].blank? || attributes['value'].blank? }
+    :reject_if => proc{|attributes| attributes['name'].blank? || attributes['value'].blank?}
 end
 
 class Attr

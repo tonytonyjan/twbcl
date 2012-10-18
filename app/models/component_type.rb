@@ -7,11 +7,11 @@ class ComponentType
   has_many :children, :class_name => "ComponentType", :foreign_key => :parent_id
   validates :name, :presence => true
 
-  def self.post_order root, level = 1
+  def self.post_order root, level = 1, &block
     yield root, level
     level += 1
     root.children.each do |child|
-      yield child, level
+      ComponentType.post_order(child, level, &block)
     end
   end
 

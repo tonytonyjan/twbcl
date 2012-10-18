@@ -34,6 +34,8 @@ class ComponentsController < ApplicationController
   end
 
   def update
+    require 'pp'
+    pp params[:component]
     if @component.update_attributes params[:component]
       flash[:notice] = "Succeeded!"
       redirect_to @component

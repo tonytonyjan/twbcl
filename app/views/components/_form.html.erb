@@ -12,7 +12,7 @@
       <p>Open Studio Objects</p>
       <%= f.simple_fields_for :os_objects do |ff| %>
         <div class="os-obj-fields">
-          <%= ff.input :name %>
+          <%= ff.input :name, :label => "Object Name" %>
           <p>Attributes</p>
           <%= ff.simple_fields_for :attrs do |fff| %>
             <div class="attr-fields">
@@ -22,7 +22,9 @@
           <% end %>
           <%= button_tag "New Attribute", :type => "button", :class => "btn new-attr-btn" %>
         </div>
+        <hr>
       <% end %>
+      <%= button_tag "New Object", :type => "button", :class => "btn new-obj-btn" %>
     </div>
   <% end %>
 </div>
