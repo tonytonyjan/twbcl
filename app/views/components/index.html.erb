@@ -1,4 +1,7 @@
-<%= page_header "Components" %>
+<%= page_header do %>
+  <%= render "toolbar" %>
+  <%= params[:template].present? ? "Templates" : "Components" %>
+<% end %>
 
 <div class="row">
   <div class="span3 well">
@@ -7,9 +10,7 @@
 
   <div class="span8">
     <ul>
-      <% @components.each do |c| %>
-        <li><%= c.name %> <%= link_to "Show", c %> <%= link_to "Edit", edit_component_path(c) %> <%= link_to "Delete", component_path(c), :method => :delete %></li>
-      <% end %>
+      <%= render @components %>
     </ul>
   </div>
 </div>

@@ -2,7 +2,7 @@ class ComponentsController < ApplicationController
   before_filter :find!, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @components = Component.all
+    @components = Component.where :is_template => params[:template] || false
     @component_types = ComponentType.all
   end
 
@@ -15,7 +15,12 @@ class ComponentsController < ApplicationController
   end
 
   def new
-    @component = Component.new
+    if found = params[:template_id] && Component.find(params[:template_id])
+      @component = found.dup
+      @component.is_template = false
+    else
+      @component = Component.new
+    end
     @component.os_objects.build.attrs.build
   end
 
@@ -34,8 +39,6 @@ class ComponentsController < ApplicationController
   end
 
   def update
-    require 'pp'
-    pp params[:component]
     if @component.update_attributes params[:component]
       flash[:notice] = "Succeeded!"
       redirect_to @component

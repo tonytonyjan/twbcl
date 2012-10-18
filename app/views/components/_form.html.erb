@@ -4,12 +4,13 @@
 
     <div class="span3">
       <%= f.input :name %>
+      <%= f.input :is_template, :as => :boolean, :label => "Save as Template?" %>
       <%= f.association :component_types, :collection => ComponentType.all, :as => :check_boxes %>
       <%= f.button :submit, :class => "btn-primary" %>
     </div>
 
     <div class="span3">
-      <p>Open Studio Objects</p>
+      <b>Open Studio Objects</b>
       <%= f.simple_fields_for :os_objects do |ff| %>
         <div class="os-obj-fields">
           <%= ff.input :name, :label => "Object Name" %>

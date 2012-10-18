@@ -1,0 +1,6 @@
+<li>
+  <%= component.name %> <%= link_to "Show", component %>
+  <%= link_to "Use", new_component_path(:template_id => component)%>
+  <%= link_to "Edit", edit_component_path(component) %>
+  <%= link_to "Delete", component_path(component), :method => :delete %>
+</li>

@@ -42,7 +42,7 @@ module BootstrapHelper
     def nav_li *args, &block
       options = (block_given? ? args.first : args.second) || {}
       url = url_for(options)
-      active = "active" if url == request.path || url == request.url
+      active = "active" if url == request.path || url == request.original_fullpath || url == request.url
       content_tag :li, :class => active do
         link_to *args, &block
       end

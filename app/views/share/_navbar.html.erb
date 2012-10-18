@@ -15,13 +15,14 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Management <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <%= nav_li "New Component", new_component_path %>
-              <%= nav_li "New Component Type", new_component_type_path %>
-              <%= nav_li "Manage Component Type", component_types_path %>
+              <li class="nav-header">New</li>
+              <%= nav_li "Component / Template", new_component_path %>
+              <%= nav_li "Component Type", new_component_type_path %>
               <li class="divider"></li>
-              <li class="nav-header">Nav header</li>
-              <li><a href="#">Separated link</a></li>
-              <li><a href="#">One more separated link</a></li>
+              <li class="nav-header">Browse</li>
+              <%= nav_li "Components", components_path %>
+              <%= nav_li "Templates", components_path(:template => true) %>
+              <%= nav_li "Component Types", component_types_path %>
             </ul>
           </li>
         </ul>

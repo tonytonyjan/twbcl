@@ -1,13 +1,16 @@
 <ul class="nav nav-list">
+
+  <%= nav_li "Browse All", components_path(params.slice(:template))%>
+
   <li class="nav-header">Component Types</li>
 
   <% ComponentType.roots.each do |root| %>
     <% root.post_order do |ct, level| %>
       <li>
-        <%= link_to ct do %>
+        <%= nav_li component_type_path(ct, params.slice(:template)) do %>
           <% (level-1).times do %>--<% end %>
           <%= ct.name %>
-          <span class="badge badge-warning pull-right"><%= ct.components.count %></span>
+          <span class="badge badge-warning pull-right"><%= ct.components.where(:is_template => params[:template] || false).count %></span>
         <% end %>
       </li>
     <% end %>
