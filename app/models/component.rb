@@ -15,6 +15,13 @@ class Component
   # validations
   validates :name, :presence => true
 
+  def self.search params
+    components = Component.where(:is_template => params[:template] || false)
+    types = params[:types] && ComponentType.in(:name => params[:types].split(','))
+    components = components.in(:component_type_ids => types.to_a) if types.present?
+    components
+  end
+
   def template?
     is_template
   end

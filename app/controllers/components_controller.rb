@@ -2,7 +2,7 @@ class ComponentsController < ApplicationController
   before_filter :find!, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @components = Component.where :is_template => params[:template] || false
+    @components = Component.search(params)
     @component_types = ComponentType.all
   end
 
