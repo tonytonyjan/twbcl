@@ -26,6 +26,18 @@ class Component
     is_template
   end
 
+  def to_osm
+    rt = ""
+    os_objects.each{|obj|
+      rt += "#{obj.name},\n"
+      obj.attrs.each_with_index {|attr, index|
+        rt += "  #{attr.value}#{index == obj.attrs.size - 1 ? ';' : ','}\t! #{attr.name}\n"
+      }
+      rt += $/
+    }
+    rt
+  end
+
   private
   def process_for_template
     if is_template == true

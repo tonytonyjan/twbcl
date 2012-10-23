@@ -2,7 +2,7 @@
 <%= link_to "Edit", edit_component_path(@component) %>
 <%= link_to "Delete", component_path(@component), :method => :delete %>
 
-<%= debug @component %>
+<pre><%= @component.to_osm %></pre>
 
 <h3>Component Types</h3>
 <ul>
