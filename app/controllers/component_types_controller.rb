@@ -8,6 +8,7 @@ class ComponentTypesController < ApplicationController
   def show
     @component_types = ComponentType.all
     @components = @component_type.components.where :is_template => params[:template] || false
+    render "components/index"
   end
 
   def new

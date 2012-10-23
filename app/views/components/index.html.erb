@@ -1,6 +1,13 @@
 <%= page_header do %>
-  <%= render "toolbar" %>
-  <%= params[:template].present? ? "Templates" : "Components" %>
+  <%= render "components/toolbar" %>
+  <% if controller.controller_name == "components"%>
+    <%= params[:template].present? ? "Templates" : "Components" %>
+  <% elsif controller.controller_name == "component_types" %>
+    <%= @component_type.name %>
+    <% if params[:template].present? %>
+      <span class="label label-info">Template</span>
+    <% end %>
+  <% end %>
 <% end %>
 
 <div class="row">
