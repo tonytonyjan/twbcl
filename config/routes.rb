@@ -2,7 +2,7 @@ Twbcl::Application.routes.draw do
   resources :component_types
 
   resources :components do
-    get "sort_os_obj", :on => :member
+    get "download_osm", :on => :member
   end
 
   get "home/about"

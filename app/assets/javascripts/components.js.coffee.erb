@@ -28,17 +28,15 @@ $(document).ready ->
     new_fields.find('.new-attr-btn').click new_attr_btn_action
 
   # sortable
-  os_obj_list = $('#sortable')
-  os_obj_list.sortable({
-    item: ".os-obj-fields",
-    stop: (event, ui) ->
-      console.info event, ui, os_obj_list.sortable("serialize",
-        attribute: "x-obj-id"
-      )
-      id = $('form[action]').attr("action").match(/[0-9a-f]+$/g)
-      if(id) # id will be null in new.html.erb
-        id = id[0]
-        $.ajax
-          url: "/components/" + id + "/sort_os_obj"
-          data: os_obj_list.sortable("serialize", attribute: "x-obj-id")
-  });
+  # os_obj_list = $('.sortable')
+  # os_obj_list.sortable({
+  #   item: ".attr-fields",
+  #   stop: (event, ui) ->
+  #     console.info os_obj_list.sortable("serialize", attribute: "x-attr-id")
+  #     # id = $('form[action]').attr("action").match(/[0-9a-f]+$/g)
+  #     # if(id) # id will be null in new.html.erb
+  #     #   id = id[0]
+  #     #   $.ajax
+  #     #     url: "/components/" + id + "/sort_os_obj"
+  #     #     data: os_obj_list.sortable("serialize", attribute: "x-obj-id")
+  # });

@@ -38,15 +38,6 @@ class Component
     rt
   end
 
-  def sort_os_obj obj_ids
-    obj_ids.each_with_index{|id, index|
-      if obj = os_objects.find(id)
-        obj.order = index
-      end
-    }
-    save
-  end
-
   private
   def process_for_template
     if is_template == true
