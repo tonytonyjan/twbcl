@@ -9,10 +9,10 @@
       <%= f.button :submit, :class => "btn-primary" %>
     </div>
 
-    <div class="span3">
+    <div id="sortable" class="span3">
       <b>Open Studio Objects</b>
       <%= f.simple_fields_for :os_objects do |ff| %>
-        <div class="os-obj-fields">
+        <div x-obj-id="os_obj_order_<%= ff.object.id %>" class="os-obj-fields">
           <%= ff.input :name, :label => "Object Name" %>
           <p>Attributes</p>
           <%= ff.simple_fields_for :attrs do |fff| %>
@@ -22,8 +22,8 @@
             </div>
           <% end %>
           <%= button_tag "New Attribute", :type => "button", :class => "btn new-attr-btn" %>
+          <hr>
         </div>
-        <hr>
       <% end %>
       <%= button_tag "New Object", :type => "button", :class => "btn new-obj-btn" %>
     </div>

@@ -1,5 +1,5 @@
 class ComponentsController < ApplicationController
-  before_filter :find!, :only => [:show, :edit, :update, :destroy]
+  before_filter :find!, :only => [:show, :edit, :update, :destroy, :sort_os_obj]
 
   def index
     @components = Component.search(params)
@@ -52,6 +52,14 @@ class ComponentsController < ApplicationController
     @component.destroy
     flash[:notice] = "Succeeded!"
     redirect_to request.referer || components_path
+  end
+
+  def sort_os_obj
+    if @component.sort_os_obj params[:os_obj_order]
+      render :nothing => true, :status => 200
+    else
+      render :nothing => true, :status => 400
+    end
   end
 
   private

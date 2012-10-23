@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
+//= require jquery-ui-1.9.0.custom

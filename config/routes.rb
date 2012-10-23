@@ -1,7 +1,9 @@
 Twbcl::Application.routes.draw do
   resources :component_types
 
-  resources :components
+  resources :components do
+    get "sort_os_obj", :on => :member
+  end
 
   get "home/about"
   get "home/contact"
