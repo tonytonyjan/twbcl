@@ -6,14 +6,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="/">Taiwan Building Component Library</a>
+      <a class="brand" href="/"><%= t("share.taiwan_building_component_library") %></a>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <%= nav_li "Browse", components_path %>
-          <%= nav_li "About", home_about_path %>
-          <%= nav_li "Contact", home_contact_path %>
+          <%= nav_li t("navbar.browse"), components_path %>
+          <%= nav_li t("navbar.about"), home_about_path %>
+          <%= nav_li t("navbar.contact"), home_contact_path %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Management <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t("navbar.management") %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li class="nav-header">New</li>
               <%= nav_li "Component / Template", new_component_path %>

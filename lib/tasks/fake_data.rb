@@ -1,5 +1,3 @@
-Rake::Task['db:drop'].invoke
-
 10.times{ComponentType.create :name => Faker::Lorem.sentence((1..3).to_a.sample)}
 
 component_types = ComponentType.all

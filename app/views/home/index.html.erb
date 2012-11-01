@@ -1,21 +1,21 @@
 <!-- Main hero unit for a primary marketing message or call to action -->
 <div class="hero-unit">
-  <h1>Taiwan Building Component Library</h1>
-  <p>The Building Component Library is a repository of building data used to create building energy models. The data are broken down into separate components that represent parts of a building: windows, walls, schedules, and weather information are a few examples.</p>
-  <p>Search for components by type or keyword and use the facets to narrow down your search. Once you find the components you need, download them and insert them in your energy model.</p>
-  <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+  <h1><%= t("share.taiwan_building_component_library") %></h1>
+  <p><%= t(".caption") %></p>
+  <p><%= t(".caption2") %></p>
+  <p><a class="btn btn-primary btn-large"><%= t(".learn_more") %> &raquo;</a></p>
 </div>
 
 <!-- Example row of columns -->
 <div class="row">
   <div class="span4">
-    <h2>Components <small><%= Component.count %> Components</small> </h2>
-    <p>The components are designed to provide data to the energy modeler and simplify the process of gathering inputs. The range of components goes from whole buildings to detailed files, like duct sealing components.</p>
+    <h2><%= Component.model_name.human :count => 2 %> <small><%= Component.count %> <%= Component.model_name.human :count => 2 %></small> </h2>
+    <p><%= t(".caption3") %></p>
     <form class="form-search">
       <input type="text" name="q" class="search-query" placeholder="ex. Skylight">
-      <button type="submit" class="btn">Search</button>
+      <button type="submit" class="btn"><%= t("share.search") %></button>
     </form>
-    <p><%= link_to "Browse Components", components_path, :class => "btn btn-warning btn-large" %></p>
+    <p><%= link_to t(".browse_components"), components_path, :class => "btn btn-warning btn-large" %></p>
   </div>
   <div class="span4">
     <h2>Heading</h2>
@@ -23,6 +23,6 @@
     <p><a class="btn" href="#">View details &raquo;</a></p>
   </div>
   <div class="span4">
-    <%= link_to "Developer Access", home_api_path, :class => "btn btn-success btn-large" %>
+    <%= link_to t(".developer_access"), home_api_path, :class => "btn btn-success btn-large" %>
   </div>
 </div>

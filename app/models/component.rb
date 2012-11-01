@@ -6,7 +6,7 @@ class Component
   # scopes
   scope :templates, where(:is_template => true)
   # fields
-  field :name, :type => String
+  field :name, :type => String, localize: true
   field :is_template, :type => Boolean, :default => false
   # relations
   embeds_many :os_objects
