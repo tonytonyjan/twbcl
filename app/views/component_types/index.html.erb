@@ -1,10 +1,9 @@
-<%= page_header "Component Types" %>
+<%= page_header @header %>
 <%= link_to "New component type", new_component_type_path %>
 
 <p>
   <% ComponentType.roots.each do |root| %>
     <% root.post_order do |c, level| %>
-      <%= puts c.name, level %>
       <% (level-1).times do %>--<% end %>
       <%= c.name %> <%= link_to "Show", c %> <%= link_to "Edit", edit_component_type_path(c) %> <%= link_to "Delete", component_type_path(c), :method => :delete %><br>
     <% end %>

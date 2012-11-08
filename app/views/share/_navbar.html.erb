@@ -6,7 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="/"><%= t("share.taiwan_building_component_library") %></a>
+      <a class="brand" href="/"><%= t("site_name") %></a>
       <div class="nav-collapse collapse">
         <ul class="nav">
           <%= nav_li t("navbar.browse"), components_path %>
@@ -15,14 +15,14 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t("navbar.management") %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li class="nav-header">New</li>
-              <%= nav_li "Component / Template", new_component_path %>
-              <%= nav_li "Component Type", new_component_type_path %>
+              <li class="nav-header"><%= t("navbar.new") %></li>
+              <%= nav_li "#{Component.model_name.human} / #{t("template")}", new_component_path %>
+              <%= nav_li ComponentType.model_name.human, new_component_type_path %>
               <li class="divider"></li>
-              <li class="nav-header">Browse</li>
-              <%= nav_li "Components", components_path %>
-              <%= nav_li "Templates", components_path(:template => true) %>
-              <%= nav_li "Component Types", component_types_path %>
+              <li class="nav-header"><%= t("navbar.browse") %></li>
+              <%= nav_li Component.model_name.human, components_path %>
+              <%= nav_li t("template"), components_path(:template => true) %>
+              <%= nav_li ComponentType.model_name.human, component_types_path %>
             </ul>
           </li>
         </ul>

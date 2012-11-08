@@ -1,5 +1,6 @@
 class ComponentsController < ApplicationController
   before_filter :find!, :only => [:show, :edit, :update, :destroy, :download_osm]
+  before_filter :set_header, :only => [:new, :edit]
 
   def index
     @components = Component.search(params)
@@ -18,10 +19,12 @@ class ComponentsController < ApplicationController
     if found = params[:template_id] && Component.find(params[:template_id])
       @component = found.dup
       @component.is_template = false
+      require 'pp'
+      pp found, @component
     else
       @component = Component.new
     end
-    @component.os_objects.build.attrs.build
+    #@component.os_objects.build.attrs.build
   end
 
   def create
@@ -35,7 +38,7 @@ class ComponentsController < ApplicationController
   end
 
   def edit
-    @component.os_objects.build.attrs.build
+    #@component.os_objects.build.attrs.build
   end
 
   def update

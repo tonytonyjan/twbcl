@@ -1,4 +1,6 @@
 zh-TW:
+  site_name: 臺灣建材資料庫
+  template: 元件樣板
   home:
     index:
       caption: 建築元件庫是一個用於創建建築節能模型建立數據資料庫。數據被分解成獨立的組件，代表的部分建築：窗戶，牆壁，日程安排和天氣信息是幾個例子。
@@ -7,24 +9,39 @@ zh-TW:
       learn_more: 了解更多
       developer_access: 開發人員存取
       browse_components: 瀏覽元件
+  new: 新增%{model}
+  delete: 刪除%{model}
   navbar:
+    new: 新增
     browse: 瀏覽
     about: 關於
     contact: 聯絡
     management: 管理
+  toolbar:
+    new: 新增
+    browse: 瀏覽
   share:
     search: 搜尋
-    taiwan_building_component_library: 臺灣建材資料庫
   mongoid:
+    errors:
+      models:
+        component:
+          attributes:
+            name:
+              blank_in_locale: 不能是空白
     models:
       component:
         one: 元件
         other: 元件
-      component_types:
+      component_type:
         one: 元件類別
         other: 元件類別
+      os_object: OS物件
+      attr: 物件屬性
     attributes:
       component:
         name: 名稱
-        is_template: 是樣板
+        is_template: 是否為樣板
         component_types: 元件類別
+      os_object:
+        name: 物件名稱

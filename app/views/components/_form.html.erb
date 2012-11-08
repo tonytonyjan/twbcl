@@ -1,31 +1,19 @@
-<div class="row">
-  <%= simple_form_for @component, :multipart => true do |f| %>
-    <%= record_message @component %>
-
+<%= simple_nested_form_for @component, :multipart => true do |f| %>
+  <%= record_message @component %>
+  <div class="row">
     <div class="span3">
       <%= f.input :name %>
-      <%= f.input :is_template, :as => :boolean, :label => "Save as Template?" %>
+      <%= f.input :is_template, :as => :boolean %>
       <%= f.association :component_types, :collection => ComponentType.all, :as => :check_boxes %>
       <%= f.button :submit, :class => "btn-primary" %>
     </div>
 
-    <div class="span3">
-      <b>Open Studio Objects</b>
+    <div class="span9">
+      <b><%= OsObject.model_name.human %></b>
       <%= f.simple_fields_for :os_objects do |ff| %>
-        <div class="os-obj-fields sortable">
-          <%= ff.input :name, :label => "Object Name" %>
-          <p>Attributes</p>
-          <%= ff.simple_fields_for :attrs do |fff| %>
-            <div x-attr-id="attr_<%= fff.object.id %>" class="attr-fields">
-              <%= fff.input :name, :label => false, :placeholder => "Name" %>
-              <%= fff.input :value, :label => false, :placeholder => "Value" %>
-            </div>
-          <% end %>
-          <%= button_tag "New Attribute", :type => "button", :class => "btn new-attr-btn" %>
-          <hr>
-        </div>
+        <%= render "os_object_fields", :f => ff %>
       <% end %>
-      <%= button_tag "New Object", :type => "button", :class => "btn new-obj-btn" %>
+      <%= f.link_to_add t("new", :model => OsObject.model_name.human), :os_objects, :class => "btn btn-info" %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

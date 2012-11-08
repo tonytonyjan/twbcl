@@ -4,9 +4,12 @@ gem 'rails', '3.2.8'
 gem 'mongoid'
 gem 'simple_form'
 gem 'dynamic_form'
+gem 'nested_form'
+gem 'will_paginate'
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'rails-i18n'
+gem "tj_rails_extension", :git => "git://github.com/tonytonyjan/tj_rails_extension.git"
 
 group :development do
   gem 'faker'

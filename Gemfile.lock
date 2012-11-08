@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/tonytonyjan/tj_rails_extension.git
+  revision: 4c885e511c5866016a045af01b02cb47577e12b9
+  specs:
+    tj_rails_extension (0.0.1)
+      rails (~> 3.2.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -68,6 +75,7 @@ GEM
       tzinfo (~> 0.3.22)
     moped (1.2.7)
     multi_json (1.3.6)
+    nested_form (0.3.1)
     origin (1.0.9)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -118,6 +126,7 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    will_paginate (3.0.3)
 
 PLATFORMS
   x86-mingw32
@@ -130,8 +139,11 @@ DEPENDENCIES
   faker
   jquery-rails
   mongoid
+  nested_form
   rails (= 3.2.8)
   rails-i18n
   sass-rails (~> 3.2.3)
   simple_form
+  tj_rails_extension!
   uglifier (>= 1.0.3)
+  will_paginate

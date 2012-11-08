@@ -1,5 +1,6 @@
 class ComponentTypesController < ApplicationController
   before_filter :find!, :only => [:show, :edit, :update, :destroy]
+  before_filter :set_header, :only => [:index, :new, :edit]
 
   def index
     @component_types = ComponentType.all

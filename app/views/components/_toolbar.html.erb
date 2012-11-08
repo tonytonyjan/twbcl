@@ -1,24 +1,24 @@
 <div class="btn-toolbar pull-right">
   <div class="btn-group">
     <a class="btn btn-primary btn-large dropdown-toggle" data-toggle="dropdown" href="#">
-      New
+      <%= t "toolbar.new" %>
       <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
-      <%= nav_li "Component / Template", new_component_path %>
-      <%= nav_li "Component Type", new_component_type_path %>
+      <%= nav_li "#{Component.model_name.human} / #{t("template")}", new_component_path %>
+      <%= nav_li ComponentType.model_name.human, new_component_type_path %>
     </ul>
   </div>
 
   <div class="btn-group">
     <a class="btn btn-info btn-large dropdown-toggle" data-toggle="dropdown" href="#">
-      Brows
+      <%= t "toolbar.browse" %>
       <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
-      <%= nav_li "Components", components_path %>
-      <%= nav_li "Templates", components_path(:template => true) %>
-      <%= nav_li "Component Types", component_types_path %>
+      <%= nav_li Component.model_name.human, components_path %>
+      <%= nav_li t("template"), components_path(:template => true) %>
+      <%= nav_li ComponentType.model_name.human, component_types_path %>
     </ul>
   </div>
 </div>

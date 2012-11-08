@@ -2,41 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$(document).ready ->
-  # form
-  new_attr_btn_action = (event) -> 
-    last_fields = $(this).closest('.os-obj-fields').find('.attr-fields:last-of-type')
-    new_fields = last_fields.clone()
-    now = Date.now()
-    new_fields.find('input').each (index, element) ->
-      element.value = ""
-      element.id = element.id.replace(/attrs_attributes_\d+/, "attrs_attributes_" + now)
-      element.name = element.name.replace(/attrs_attributes\]\[\d+/, "attrs_attributes][" + now)
-    last_fields.after new_fields
-  
-  $('.new-attr-btn').click new_attr_btn_action
-    
-  $('.new-obj-btn').click (event) ->
-    last_fields = $('.os-obj-fields:last-of-type')
-    new_fields = last_fields.clone()
-    now = Date.now()
-    new_fields.find('input').each (index, element) ->
-      element.value = ""
-      element.id = element.id.replace(/os_objects_attributes_\d+/, "os_objects_attributes_" + now)
-      element.name = element.name.replace(/os_objects_attributes\]\[\d+/, "os_objects_attributes][" + now)
-    last_fields.after new_fields
-    new_fields.find('.new-attr-btn').click new_attr_btn_action
-
-  # sortable
-  # os_obj_list = $('.sortable')
-  # os_obj_list.sortable({
-  #   item: ".attr-fields",
-  #   stop: (event, ui) ->
-  #     console.info os_obj_list.sortable("serialize", attribute: "x-attr-id")
-  #     # id = $('form[action]').attr("action").match(/[0-9a-f]+$/g)
-  #     # if(id) # id will be null in new.html.erb
-  #     #   id = id[0]
-  #     #   $.ajax
-  #     #     url: "/components/" + id + "/sort_os_obj"
-  #     #     data: os_obj_list.sortable("serialize", attribute: "x-obj-id")
-  # });
+$ ->
+  $('.add_nested_fields').css display: 'none'
+  $('.remove_nested_fields').css display: 'none'
