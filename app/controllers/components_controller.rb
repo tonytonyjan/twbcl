@@ -5,7 +5,7 @@ class ComponentsController < ApplicationController
 
   def index
     @header = Component.model_name.human
-    @components = Component.search(params)
+    @components = Component.paginate(:page => params[:page], :per_page => 40)
     @component_types = ComponentType.all
   end
 

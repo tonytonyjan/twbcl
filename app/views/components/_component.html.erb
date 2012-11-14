@@ -1,5 +1,5 @@
 <li>
-  <%= component.name %> <%= link_to t("show"), component %>
+  <%= component.name %> <%= "%.1f" % component.score %>  <%= link_to t("show"), component %>
   <%= link_to t("edit"), edit_component_path(component) %>
   <%= link_to t("delete"), component_path(component), :method => :delete %>
 </li>

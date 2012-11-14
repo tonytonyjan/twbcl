@@ -9,7 +9,7 @@ class ComponentTypesController < ApplicationController
   def show
     @header = @component_type.name
     @component_types = ComponentType.all
-    @components = @component_type.components.where :is_template => params[:template] || false
+    @components = @component_type.components.paginate(:page => params[:page], :per_page => 40)
     render "components/index"
   end
 

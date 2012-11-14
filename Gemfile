@@ -11,6 +11,8 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'rails-i18n'
 gem "tj_rails_extension", :git => "git://github.com/tonytonyjan/tj_rails_extension.git"
 gem 'whenever', :require => false
+gem 'will_paginate'
+gem 'will_paginate_mongoid'
 
 group :development do
   gem 'faker'

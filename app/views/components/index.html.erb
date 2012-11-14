@@ -6,8 +6,10 @@
   </div>
 
   <div class="span8">
+    <%= will_paginate @components %>
     <ul>
       <%= render @components %>
     </ul>
+    <%= will_paginate @components %>
   </div>
 </div>
