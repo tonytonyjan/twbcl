@@ -1,14 +1,14 @@
 <div class="row">
   <div class="span3">
     <%= f.input :name, :wrapper_html => {:class => "component-os_objects-name-field"} %>
-    <%= f.link_to_remove t("delete", :model => OsObject.model_name.human) %>
+    <%= f.link_to_remove t("obj_complements.delete", :thing => OsObject.model_name.human) %>
   </div>
   <div class="span3">
     <p><%= Attr.model_name.human %></p>
     <%= f.simple_fields_for :attrs do |ff| %>
       <%= render "components/attribute_fields", :f => ff %>
     <% end %>
-    <%= f.link_to_add t("new", :model => Attr.model_name.human), :attrs %>
+    <%= f.link_to_add t("obj_complements.new", :thing => Attr.model_name.human), :attrs %>
   </div>
 </div>
 <hr>

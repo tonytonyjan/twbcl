@@ -1,6 +1,6 @@
 <tr>
   <td><%= component.name %></td>
-  <td><%= "%.1f" % component.score %></td>
+  <td><%= "%.1f" % (component.score || 0.0) %></td>
   <td><%= link_to t("show"), component %>
   <%= link_to t("edit"), edit_component_path(component) %>
   <%= link_to t("delete"), component_path(component), :method => :delete %></td>

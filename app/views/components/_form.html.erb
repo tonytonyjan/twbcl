@@ -18,7 +18,7 @@
       <%= f.simple_fields_for :os_objects do |ff| %>
         <%= render "components/os_object_fields", :f => ff %>
       <% end %>
-      <%= f.link_to_add t("new", :model => OsObject.model_name.human), :os_objects, :class => "btn btn-info" %>
+      <%= f.link_to_add t("obj_complements.new", :thing => OsObject.model_name.human), :os_objects, :class => "btn btn-info" %>
     </div>
   </div>
 <% end %>
