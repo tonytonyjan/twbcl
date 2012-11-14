@@ -7,9 +7,16 @@
 
   <div class="span8">
     <%= will_paginate @components %>
-    <ul>
-      <%= render @components %>
-    </ul>
+    <table class="table table-striped table-bordered table-condensed table-hover">
+      <thead>
+        <th><%= t("name") %></th>
+        <th><%= t("score") %></th>
+        <th><%= t("management") %></th>
+      </thead>
+      <tbody>
+        <%= render @components %>
+      </tbody>
+    </table>
     <%= will_paginate @components %>
   </div>
 </div>

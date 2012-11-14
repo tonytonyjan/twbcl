@@ -1,5 +1,7 @@
-<li>
-  <%= component.name %> <%= "%.1f" % component.score %>  <%= link_to t("show"), component %>
+<tr>
+  <td><%= component.name %></td>
+  <td><%= "%.1f" % component.score %></td>
+  <td><%= link_to t("show"), component %>
   <%= link_to t("edit"), edit_component_path(component) %>
-  <%= link_to t("delete"), component_path(component), :method => :delete %>
-</li>
+  <%= link_to t("delete"), component_path(component), :method => :delete %></td>
+</tr>
