@@ -5,6 +5,7 @@ class ComponentType
   has_and_belongs_to_many :components
   belongs_to :parent, :class_name => "ComponentType"
   has_many :children, :class_name => "ComponentType", :foreign_key => :parent_id
+  has_one :template, :class_name => "Component", :inverse_of => :template_type
   validates :name, :presence => true
 
   def self.post_order root, level = 1, &block

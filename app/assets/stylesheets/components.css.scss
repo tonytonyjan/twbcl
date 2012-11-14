@@ -1,3 +1,9 @@
 // Place all the styles related to the Components controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body.components{
+  .add_nested_fields, .remove_nested_fields, .component-template_type, .component-component_types_fields{
+    display: none;
+  }
+}

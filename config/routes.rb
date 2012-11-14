@@ -1,8 +1,12 @@
 Twbcl::Application.routes.draw do
-  resources :component_types
 
+  resources :templates do
+    get "choose_type", :on => :collection
+  end
+  resources :component_types
   resources :components do
     get "download_osm", :on => :member
+    get "choose_type", :on => :collection
   end
 
   get "home/about"

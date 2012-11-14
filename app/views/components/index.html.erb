@@ -1,14 +1,4 @@
-<%= page_header do %>
-  <%= render "components/toolbar" %>
-  <% if controller.controller_name == "components"%>
-    <%= params[:template].present? ? t("template") : Component.model_name.human %>
-  <% elsif controller.controller_name == "component_types" %>
-    <%= @component_type.name %>
-    <% if params[:template].present? %>
-      <span class="label label-info"><%= t("template") %></span>
-    <% end %>
-  <% end %>
-<% end %>
+<%= page_header @header %>
 
 <div class="row">
   <div class="span3 well">

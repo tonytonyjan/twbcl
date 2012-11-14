@@ -1,8 +1,10 @@
 class ComponentsController < ApplicationController
   before_filter :find!, :only => [:show, :edit, :update, :destroy, :download_osm]
+  before_filter :find_component_type!, :only => [:new]
   before_filter :set_header, :only => [:new, :edit]
 
   def index
+    @header = Component.model_name.human
     @components = Component.search(params)
     @component_types = ComponentType.all
   end
@@ -16,44 +18,42 @@ class ComponentsController < ApplicationController
   end
 
   def new
-    if found = params[:template_id] && Component.find(params[:template_id])
-      @component = found.dup
-      @component.is_template = false
-      require 'pp'
-      pp found, @component
-    else
-      @component = Component.new
-    end
-    #@component.os_objects.build.attrs.build
+    @header += "/" + @component_type.name
+    @component = @component_type.template ? @component_type.template.dup : Component.new
+    @component.assign_attributes name: nil, is_template: false
+    @component.component_types << @component_type
+    # @component.os_objects.build.attrs.build
   end
 
   def create
-    @component = Component.new params[:component]
+    @component = Component.create(params[:component])
     if @component.save
-      flash[:notice] = "Succeeded!"
-      redirect_to @component
+      flash[:notice] = t("succeed")
+      redirect_to @component.is_template ? component_types_path : @component
     else
+      flash[:alert] = t("fail")
       render "new"
     end
   end
 
   def edit
+    @header += "/#{@component.name.presence || @component.component_types.first.name}"
     #@component.os_objects.build.attrs.build
   end
 
   def update
     if @component.update_attributes params[:component]
-      flash[:notice] = "Succeeded!"
-      redirect_to @component
+      flash[:notice] = t("succeed")
+      redirect_to @component.is_template ? component_types_path : @component
     else
-      flash[:alert] = "Failed!"
+      flash[:alert] = t("fail")
       render "edit"
     end
   end
 
   def destroy
     @component.destroy
-    flash[:notice] = "Succeeded!"
+    flash[:notice] = t("succeed")
     redirect_to request.referer || components_path
   end
 
@@ -61,11 +61,25 @@ class ComponentsController < ApplicationController
     send_data @component.to_osm, :filename => "#{@component.name.parameterize}.osm"
   end
 
+  def choose_type
+    @header = "#{t("obj_complements.new", :thing => Component.model_name.human)} / #{t("please_choose_a_type")}"
+    @component_types = ComponentType.all
+    render "templates/choose_type"
+  end
+
   private
   def find!
     unless @component = Component.find(params[:id])
       flash[:alert] = "Component not found!"
       redirect_to request.referer || components_path
+    end
+  end
+
+  private
+  def find_component_type!
+    unless @component_type = ComponentType.find(params[:component_type_id])
+      flash[:alert] = "Not found"
+      redirect request.referer || components_path
     end
   end
 end

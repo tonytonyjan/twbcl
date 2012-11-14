@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require garber_irish
 //= require_tree .
 //= require bootstrap
 //= require jquery_nested_form

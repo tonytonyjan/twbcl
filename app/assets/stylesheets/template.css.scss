@@ -1,0 +1,9 @@
+// Place all the styles related to the Template controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body.templates{
+  .component-os_objects-attributes-value-fields, .component-component_types_fields, .component-name, .component-template_type{
+    display: none;
+  }
+}

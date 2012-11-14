@@ -2,6 +2,11 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$ ->
-  $('.add_nested_fields').css display: 'none'
-  $('.remove_nested_fields').css display: 'none'
+TWBCL.components = 
+  readonly: () ->
+    $('.component-os_objects-name-field input').attr("readonly", true)
+    $('.component-os_objects-attributes-name-fields input').attr("readonly", true)
+  new: () ->
+    this.readonly()
+  edit: () ->
+    this.readonly()

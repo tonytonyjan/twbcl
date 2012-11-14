@@ -7,6 +7,7 @@ class ComponentTypesController < ApplicationController
   end
 
   def show
+    @header = @component_type.name
     @component_types = ComponentType.all
     @components = @component_type.components.where :is_template => params[:template] || false
     render "components/index"

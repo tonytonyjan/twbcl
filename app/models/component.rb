@@ -2,15 +2,17 @@ require 'carrierwave/mongoid'
 class Component
   include Mongoid::Document
   # callbacks
-  before_save :process_for_template
+  #before_save :process_for_template
   # scopes
   scope :templates, where(:is_template => true)
   # fields
   field :name, :type => String
   field :is_template, :type => Boolean, :default => false
+  field :template_type_id, :type => String
   # relations
   embeds_many :os_objects
   has_and_belongs_to_many :component_types
+  belongs_to :template_type, :class_name => "ComponentType", :inverse_of => :template
   accepts_nested_attributes_for :os_objects, :allow_destroy => true, :reject_if => proc{|attributes| attributes['name'].blank?}
   # validations
   validates :name, :presence => true
@@ -59,9 +61,7 @@ class OsObject
   field :order, :type => Integer, :default => 0
   embeds_many :attrs
   embedded_in :component
-  accepts_nested_attributes_for :attrs,
-    :allow_destroy => true,
-    :reject_if => proc{|attributes| attributes['name'].blank? || attributes['value'].blank?}
+  accepts_nested_attributes_for :attrs, :allow_destroy => true, :reject_if => proc{|attributes| attributes['name'].blank?}
 end
 
 class Attr

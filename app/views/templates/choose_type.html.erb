@@ -1,0 +1,9 @@
+<%= page_header @header %>
+<p>
+  <% ComponentType.roots.each do |root| %>
+    <% root.post_order do |c, level| %>
+      <% (level-1).times do %>--<% end %>
+      <%= link_to c.name, send("new_#{controller_name.singularize}_path", :component_type_id => c.id) %><br>
+    <% end %>
+  <% end %>
+</p>

@@ -16,12 +16,12 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t("navbar.management") %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li class="nav-header"><%= t("navbar.new") %></li>
-              <%= nav_li "#{Component.model_name.human} / #{t("template")}", new_component_path %>
+              <%= nav_li Component.model_name.human, choose_type_components_path %>
+              <%= nav_li t("template"), choose_type_templates_path%>
               <%= nav_li ComponentType.model_name.human, new_component_type_path %>
               <li class="divider"></li>
               <li class="nav-header"><%= t("navbar.browse") %></li>
               <%= nav_li Component.model_name.human, components_path %>
-              <%= nav_li t("template"), components_path(:template => true) %>
               <%= nav_li ComponentType.model_name.human, component_types_path %>
             </ul>
           </li>

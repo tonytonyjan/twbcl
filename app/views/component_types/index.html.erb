@@ -1,11 +1,11 @@
 <%= page_header @header %>
-<%= link_to "New component type", new_component_type_path %>
+<%= link_to t("obj_complements.new", :thing => ComponentType.model_name.human), new_component_type_path %>
 
 <p>
   <% ComponentType.roots.each do |root| %>
     <% root.post_order do |c, level| %>
       <% (level-1).times do %>--<% end %>
-      <%= c.name %> <%= link_to "Show", c %> <%= link_to "Edit", edit_component_type_path(c) %> <%= link_to "Delete", component_type_path(c), :method => :delete %><br>
+      <%= c.name %> <%= link_to t("edit"), edit_component_type_path(c) %> <%= link_to t("obj_complements.edit", :thing => t("template")), new_template_path(:component_type_id => c.id) %> <%= link_to t("delete"), component_type_path(c), :method => :delete %><br>
     <% end %>
   <% end %>
 </p>

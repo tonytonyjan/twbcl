@@ -1,3 +1,3 @@
-<%= f.input :name, :label => false, :placeholder => "Name" %>
-<%= f.input :value, :label => false, :placeholder => "Value" %>
+<%= f.input :name, :label => false, :placeholder => "Name", :wrapper_html => {:class => "component-os_objects-attributes-name-fields"} %>
+<%= f.input :value, :label => false, :placeholder => "Value", :wrapper_html => {:class => "component-os_objects-attributes-value-fields"} %>
 <%= f.link_to_remove t("delete", :model => Attr.model_name.human) %>

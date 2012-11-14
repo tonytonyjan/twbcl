@@ -2,16 +2,21 @@
   <%= record_message @component %>
   <div class="row">
     <div class="span3">
-      <%= f.input :name %>
-      <%= f.input :is_template, :as => :boolean %>
-      <%= f.association :component_types, :collection => ComponentType.all, :as => :check_boxes %>
-      <%= f.button :submit, :class => "btn-primary" %>
+      <%= f.input :name, :wrapper_html => {:class => "component-name"} %>
+      <%= f.association :template_type, :collection => ComponentType.all, :wrapper_html => {:class => "component-template_type"} %>
+      <%= f.input :is_template, :as => :hidden %>
+      <%= f.association :component_types, :collection => ComponentType.all, :as => :check_boxes, :wrapper_html => {:class => "component-component_types_fields"} %>
+      <% if controller_name == "components" %>
+        <%= f.button :submit, :class => "btn-primary" %>
+      <% else %>
+        <%= f.button :submit, "儲存樣板", :class => "btn-primary" %>
+      <% end %>
     </div>
 
     <div class="span9">
       <b><%= OsObject.model_name.human %></b>
       <%= f.simple_fields_for :os_objects do |ff| %>
-        <%= render "os_object_fields", :f => ff %>
+        <%= render "components/os_object_fields", :f => ff %>
       <% end %>
       <%= f.link_to_add t("new", :model => OsObject.model_name.human), :os_objects, :class => "btn btn-info" %>
     </div>
