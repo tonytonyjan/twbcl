@@ -10,6 +10,7 @@ gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'rails-i18n'
 gem "tj_rails_extension", :git => "git://github.com/tonytonyjan/tj_rails_extension.git"
+gem 'whenever', :require => false
 
 group :development do
   gem 'faker'

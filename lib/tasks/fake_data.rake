@@ -2,7 +2,7 @@ require 'faker'
 
 namespace :faker  do
   desc "create some fake data"
-  task :fake_data => :environment do
+  task :components => :environment do
     print "How many fake component do you want?"
     num = $stdin.gets.to_i
     component_types = ComponentType.all

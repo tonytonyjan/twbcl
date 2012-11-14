@@ -4,11 +4,13 @@ class Component
   # callbacks
   #before_save :process_for_template
   # scopes
+  default_scope order_by(:score => :desc)
   scope :templates, where(:is_template => true)
   # fields
   field :name, :type => String
   field :is_template, :type => Boolean, :default => false
   field :template_type_id, :type => String
+  field :score, :type => Float
   # relations
   embeds_many :os_objects
   has_and_belongs_to_many :component_types
@@ -22,6 +24,26 @@ class Component
     types = params[:types] && ComponentType.in(:name => params[:types].split(','))
     components = components.in(:component_type_ids => types.to_a) if types.present?
     components
+  end
+
+  # It' very expensive
+  def self.generate_score
+    ComponentType.all.each{|ct|
+      ct.generate_max_score
+      ct.generate_min_score
+    }
+    Component.all.each &:generate_score
+  end
+
+  def generate_score
+    type = template_type || component_types.first
+    if type
+      f = os_objects.where(name: "XYZ").first
+           .attrs.where(name: "xyz").first
+           .value.to_f
+      score = f / (type.max_score - type.min_score)
+      update_attribute :score, score
+    end
   end
 
   def template?
